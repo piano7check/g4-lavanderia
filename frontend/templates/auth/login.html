@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="/static/css/output.css" rel="stylesheet" />
+    </head>
+
+    <body>
+    <!-- templates/auth/login.html -->
+    <form id="loginForm" class="space-y-4">
+        <input type="email" id="email" placeholder="Correo institucional" required class="border p-2 w-full" />
+        <input type="password" id="password" placeholder="Contraseña" required class="border p-2 w-full" />
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 w-full">Iniciar sesión</button>
+        <p id="errorMessage" class="text-red-500 text-sm mt-2 hidden"></p>
+        <p class="text-sm mt-4 text-center">
+          ¿No tienes cuenta? <a href="/registro" class="text-blue-600 underline">Crear cuenta</a>
+        </p>
+      </form>
+      
+    
+    <script src="/static/js/login.js"></script>  
+    
+</body>
+</html>
