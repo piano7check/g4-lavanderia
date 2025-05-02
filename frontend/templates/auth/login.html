@@ -1,27 +1,26 @@
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link href="/static/css/output.css" rel="stylesheet" />
-    </head>
-
-    <body>
-    <!-- templates/auth/login.html -->
-    <form id="loginForm" class="space-y-4">
-        <input type="email" id="email" placeholder="Correo institucional" required class="border p-2 w-full" />
-        <input type="password" id="password" placeholder="Contraseña" required class="border p-2 w-full" />
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 w-full">Iniciar sesión</button>
-        <p id="errorMessage" class="text-red-500 text-sm mt-2 hidden"></p>
-        <p class="text-sm mt-4 text-center">
-          ¿No tienes cuenta? <a href="/registro" class="text-blue-600 underline">Crear cuenta</a>
-        </p>
-      </form>
-      
-    
-    <script src="/static/js/login.js"></script>  
-    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavanderia UAB</title>
+    <link href="../../static/css/output.css" rel="stylesheet" />
+</head>
+<body class="grid grid-cols-2 h-screen">
+        <div class="bg-blue-950  flex justify-center items-center">
+            <img class="w-[28rem] h-auto" src="../../static/icons/logo-uab.svg" alt="">
+        </div>
+        <div class="flex justify-center items-center ">
+            <form id="loginForm" class=" grid grid-cols-1 w-64">
+                <h2 class="text-4xl text-blue-950 font-bold mb-5 text-center">Bienvenido</h2>
+                <h2 class="text-blue-950 mb-1">Usuario</h2>
+                <input class="border p-2 w-full rounded-xl border-gray-200 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-950 transition" type="email" id="email" placeholder="Correo institucional" required />
+                <h2 class="text-blue-950 mb-1 mt-5">Contraseña</h2>
+                <input class="border p-2 w-full rounded-xl border-gray-200 shadow-md" type="password" id="password" placeholder="Contraseña" required/>
+                <button type="submit" class="bg-blue-950 text-white px-4 py-2 w-full mt-5 rounded-xl">Acceder</button>
+                <p id="errorMessage" class="text-red-500 text-sm mt-2 "></p>
+            </form>
+        </div>  
+        <script src="/static/js/login.js"></script>   
 </body>
 </html>
