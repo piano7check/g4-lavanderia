@@ -1,27 +1,57 @@
-
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link href="/static/css/output.css" rel="stylesheet" />
-    </head>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Lavandería UAB</title>
+    <link href="../../static/css/output.css" rel="stylesheet">
+</head>
+<body class="flex h-screen">
 
-    <body>
-    <!-- templates/auth/login.html -->
-    <form id="loginForm" class="space-y-4">
-        <input type="email" id="email" placeholder="Correo institucional" required class="border p-2 w-full" />
-        <input type="password" id="password" placeholder="Contraseña" required class="border p-2 w-full" />
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 w-full">Iniciar sesión</button>
-        <p id="errorMessage" class="text-red-500 text-sm mt-2 hidden"></p>
-        <p class="text-sm mt-4 text-center">
-          ¿No tienes cuenta? <a href="/registro" class="text-blue-600 underline">Crear cuenta</a>
-        </p>
-      </form>
-      
+    <!-- Lado izquierdo: Fondo azul con logo -->
+    <div class="w-1/2 flex items-center justify-center" style="background-color: #003264;">
+        <img src="../../static/img/logo-uab-blanco.png" alt="Logo UAB" class="h-60">
+    </div>
     
-    <script src="/static/js/login.js"></script>  
+
+    <!-- Lado derecho: Formulario de login -->
+    <div class="w-1/2 bg-white flex flex-col justify-start items-end relative">
+        <!-- Logo UAB en la esquina superior derecha -->
+        <img src="../../static/img/uab-icon.png" alt="Logo UAB" class="h-20 mt-4 mr-4 absolute top-0 right-0">
     
+        <!-- Contenido del formulario -->
+        <div class="w-full flex flex-col items-center justify-center min-h-screen">
+            <h1 class="text-4xl font-bold text-blue-800 text-center mb-6" style="color: #003264;" >Bienvenido</h1>
+            <form id="loginForm" class="space-y-6">
+                <!-- Campo correo -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Correo Electrónico</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        placeholder="@uab.edu.bo" 
+                        class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-500"
+                        required
+                    >
+                </div>  
+                <!-- Campo contrasena -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        placeholder="********" 
+                        class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-500"
+                        required
+                    >
+                </div>
+                <!-- Boton de acceder-->
+                <button 
+                    type="submit" 
+                    class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200" style="background-color: #003264;">
+                    Acceder
+                </button>
+        </div>
+        <script src="../../static/js/login.js"></script>
 </body>
 </html>
