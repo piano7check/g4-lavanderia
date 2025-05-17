@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos básicos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admin - Lavandería UNADVENTISTA{% endblock %}</title>
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="../../static/css/output.css">
+    
+</head>
+
+<body class="grid grid-cols-[1rfr_4fr] grid-rows-1 h-screen bg-gray-100 text-gray-800">
+    <!-- ========== BARRA LATERAL ========== -->
+    <aside class=" bg-blue-950 text-white shadow-lg">
+        <!-- Logo y título -->
+        <div class="p-4 border-b border-gray-700">
+            <svg class="w-6 h-6" src=".././../static/img/logo-uab.png">  </svg>
+        </div>
+        
+        <!-- Menú de navegación -->
+        <nav class="p-5">
+            <ul class="space-y-3">
+                <li>
+                    <a href="{{ url_for('admin.dashboard') }}" class="flex items-center justify-center p-2 rounded-xl hover:bg-white/30 border border-white {% if request.endpoint == 'admin.dashboard' %}bg-gray-700{% endif %}">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                        Inicio
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('admin.usuarios') }}" class="flex items-center justify-center p-2 rounded-xl hover:bg-white/30 border border-white {% if request.endpoint == 'admin.usuarios' %}bg-gray-700{% endif %}">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        Usuarios
+                    </a>
+                </li>
+                
+            </ul>
+        </nav>
+        
+        <!-- Pie de la barra lateral -->
+        <!-- <div class="absolute bottom-0 w-64 p-4 border-t border-gray-700">
+            <div class="flex items-center">
+                <img class="w-8 h-8 rounded-full mr-3" src="{{ url_for('static', filename='img/avatars/admin-default.png') }}" alt="Admin Avatar">
+                <div>
+                    <p class="font-medium">{{ current_user.nombre }}</p>
+                    <p class="text-xs text-gray-400">Administrador</p>
+                </div>
+            </div>
+        </div> -->
+    </aside>
+
+    <!-- ========== CONTENIDO PRINCIPAL ========== -->
+    <div class="grid grid-cols-1 overflow-hidden bg-slate-200">
+        <!-- Header superior -->
+        <header class="bg-white shadow-sm">
+            <div class="flex items-center justify-between p-4">
+                <h2 class="text-lg font-semibold">{% block page_title %}{% endblock %}</h2>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 rounded-full hover:bg-gray-100">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                        </svg>
+                    </button>
+                    <a href="{{ url_for('auth.logout') }}" class="text-sm text-gray-600 hover:text-gray-900">Cerrar sesión</a>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Contenido dinámico -->
+        <main class="grid grid-cols-1 place-self-center overflow-y-auto p-6  space-y-4">
+            <div class="bg-slate-50 w-[75rem] h-20 rounded-xl"></div>
+            <div class="bg-slate-50 h-[27rem] w-[75rem] rounded-xl">
+                
+            </div>
+        </main>
+    </div>
+</body>
+</html>
