@@ -1,5 +1,5 @@
 # backend/app/models/usuario.py
-from app.extensions import db
+from .. import db  # Importa la instancia de SQLAlchemy desde __init__.py
 
 class Usuario(db.Model):
     __tablename__ = 'usuarios'
