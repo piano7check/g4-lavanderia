@@ -22,8 +22,8 @@ def create_app():
     # Configura CORS para permitir solicitudes desde cualquier origen
     
     #CORS(app, resources={r"/api/*": {"origins": "*"}}) # Permite todas las rutas de la API
-    CORS(app, supports_credentials=True, origins="*") # configuracon de cors para permitir todas las rutas de la API y credenciales
-
+    #CORS(app, supports_credentials=True, origins="*") # configuracon de cors para permitir todas las rutas de la API y credenciales
+    CORS(app, supports_credentials=True, origins=["http://localhost:5000", "http://127.0.0.1:5000"])
 
     # Importa y registra los blueprints
     from .routes.auth_routes import auth_bp
