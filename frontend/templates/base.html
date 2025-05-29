@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Todo lo que se repite (CSS, meta tags) -->
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <!-- Incluye el navbar (como ponerle puertas a tu casa) -->
+    {% include 'admin/partials/navbar_admin.html' %}
+    
+    <!-- Aquí va el contenido ESPECÍFICO de cada página -->
+    {% block content %}{% endblock %}
+    
+    <!-- JS común -->
+</body>
+</html>

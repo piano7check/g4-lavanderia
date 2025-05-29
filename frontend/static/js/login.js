@@ -1,21 +1,23 @@
-document.getElementById('loginForm').addEventListener('submit', async (e) => {
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const correo = document.getElementById('email').value;
-    const contrasena = document.getElementById('password').value;
-    try {
-        const response = await fetch('http://localhost:5000/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ correo, contrasena })
-        });
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.error || 'Error desconocido');
 
-        // Guardar token en localStorage y redirigir
+    const correo = document.getElementById('correo').value;
+    const contrasena = document.getElementById('contrasena').value;
+
+    const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ correo, contrasena })
+    });
+
+    if (response.ok) {
+        const data = await response.json();
         localStorage.setItem('token', data.token);
-        window.location.href = '/dashboard.html';
-    } catch (error) {
-        document.getElementById('mensajeError').textContent = error.message;
-        document.getElementById('mensajeError').classList.remove('hidden');
+        localStorage.setItem('usuario', JSON.stringify(data.usuario));
+        window.location.href = '/dashboard';
+    } else {
+        alert('Correo o contraseña incorrectos');
     }
 });

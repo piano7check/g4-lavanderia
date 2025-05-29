@@ -4,12 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
-    <link href="/static/css/output.css" rel="stylesheet" />
 </head>
-<body class="p-4 font-sans">
-    <h1 class="text-2xl font-bold">Bienvenido, <span id="nombreUsuario"></span> 👋</h1>
-    <button id="cerrarSesion" class="mt-4 px-4 py-2 bg-red-500 text-white">Cerrar sesión</button>
-
-    <script src="/static/js/dashboard.js"></script>
+<body>
+    <h1 id="titulo-bienvenida">Bienvenido</h1>
+    <script>
+        // Recupera el usuario del localStorage
+        const usuario = JSON.parse(localStorage.getItem('usuario'));
+        if (usuario && usuario.nombre) {
+            document.getElementById('titulo-bienvenida').textContent = `Bienvenido, ${usuario.nombre}`;
+        }
+    </script>
 </body>
 </html>
