@@ -9,10 +9,6 @@ if dotenv_path.exists():
 
 # backend/app/config.py
 class Config:
-    # Opción 1: Sin contraseña (si así configuraste MySQL)
-    # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root@localhost/db_lavanderia?charset=utf8mb4'
-    
-    # Opción 2: Con contraseña (recomendado)
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:uab-2025@localhost/db_lavanderia?charset=utf8mb4'
-    
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = 'clave_secreta_super_segura'  # Usa una cadena segura aquí

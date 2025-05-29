@@ -1,6 +1,7 @@
 # backend/app/routes/view_routes.py
-from flask import Blueprint, render_template, request, redirect, url_for, session
-from ..utils.auth import decodificar_token  # la función que decodifica el token
+from flask import Blueprint, render_template, request, redirect, url_for
+from ..utils.auth import decodificar_token
+from ..models import Usuario  # Asegúrate de tener este modelo
 
 view_bp = Blueprint('view_bp', __name__)
 
@@ -14,19 +15,15 @@ def login():
 
 @view_bp.route('/dashboard')
 def dashboard():
-    # Obtener el token de la sesión
-    token = session.get('token')
-    
-    if not token:
+    auth_header = request.headers.get('Authorization')
+    if not auth_header or not auth_header.startswith('Bearer '):
         return redirect(url_for('view_bp.login'))
-
+    token = auth_header.split(' ')[1]
     user_id = decodificar_token(token)
-
     if not user_id:
         return redirect(url_for('view_bp.login'))
+    # Busca el usuario en la base de datos
+    usuario = Usuario.query.get(user_id)
+    nombre = usuario.nombre if usuario else "Usuario"
+    return render_template('dashboard.html', nombre=nombre)
 
-    return render_template('dashboard.html')
-
-@view_bp.route('/registro')
-def registro():
-    return render_template('auth/registro.html')
