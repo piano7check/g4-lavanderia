@@ -3,7 +3,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const res = await fetch("/api/auth/login", {
+  const res = await fetch("http://localhost:5000/api/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ correo: email, contrasena: password }),
@@ -11,11 +11,19 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
   const data = await res.json();
 
-  if (res.ok) {
-    // El token ya se guarda en la sesión del servidor
-    window.location.href = "/dashboard";  // Redirige al dashboard
-  } else {
-    document.getElementById("errorMessage").textContent = data.message || "Error al iniciar sesión";
-    document.getElementById("errorMessage").classList.remove("hidden");
-  }
+  if (!response.ok) throw new Error(data.error || 'Error desconocido');
+
+    const { token, user } = data;
+    localStorage.setItem('token', token);
+    localStorage.setItem('tipo_usuario', user.tipo_usuario);
+
+    // Redirige según el rol
+    if (user.tipo_usuario === 'superadministrador') {
+        window.location.href = '/admin/superdashboard.html';
+    } else if (user.tipo_usuario === 'administrador') {
+        window.location.href = '/admin/dashboard.html';
+    } else {
+        window.location.href = '/student/dashboard.html';
+    }
+
 });
