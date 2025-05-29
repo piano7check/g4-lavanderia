@@ -9,13 +9,13 @@ def login():
     correo = data.get('correo')
     contrasena = data.get('contrasena')
     result = AuthController.login(correo, contrasena)
-    if result:
+    if result and 'usuario' in result and 'token' in result:
         usuario = result['usuario']
         return jsonify({
             "token": result['token'],
             "usuario": {
-                "nombre": usuario.nombre,
-                "correo": usuario.correo
+                "nombre": usuario['nombre'],
+                "correo": usuario['correo']
             }
         }), 200
     else:

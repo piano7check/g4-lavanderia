@@ -10,8 +10,7 @@ class AuthController:
             if usuario and usuario.contrasena == contrasena:  # sin hash por ahora
                 token = generar_token(usuario.id)
                 return {
-                    "message": "Login exitoso",
-                    "nombre": usuario.nombre,
+                    "usuario": usuario.to_dict(),  # <-- Aquí el cambio
                     "token": token
                 }
         return None
