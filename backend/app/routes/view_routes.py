@@ -13,8 +13,8 @@ def root():
 def login():
     return render_template('auth/login.html')
 
-@view_bp.route('/dashboard')
-def dashboard():
+#@view_bp.route('/dashboard')
+#def dashboard():
     auth_header = request.headers.get('Authorization')
     if not auth_header or not auth_header.startswith('Bearer '):
         return redirect(url_for('view_bp.login'))
@@ -26,4 +26,6 @@ def dashboard():
     usuario = Usuario.query.get(user_id)
     nombre = usuario.nombre if usuario else "Usuario"
     return render_template('dashboard.html', nombre=nombre)
-
+@view_bp.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
