@@ -4,6 +4,7 @@ from flask_cors import CORS
 from .config import Config
 import os
 
+
 db = SQLAlchemy()  # Instancia global de SQLAlchemy
 
 def create_app():

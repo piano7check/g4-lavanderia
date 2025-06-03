@@ -1,0 +1,44 @@
+<!-- frontend/templates/admin/dashboard.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio - Sistema de Lavandería</title>
+    <!-- Tailwind CSS compilado -->
+    <link href="/static/css/output.css" rel="stylesheet">
+</head>
+<body class="flex h-screen">
+    <!-- Barra lateral fija -->
+    <aside class="w-1/4 bg-blue-900 text-white flex flex-col justify-between">
+        <div class="p-4">
+            <h2 class="text-lg font-bold mb-6">Universidad Adventista</h2>
+            <nav class="flex flex-col space-y-4">
+                <!-- Botón Inicio, redirige a dashboard -->
+                <a href="/dashboard" class="hover:bg-blue-700 p-2 rounded">Inicio</a>
+                <!-- Botón Usuarios, redirige a la vista de creación/listado de usuarios -->
+                <a href="/usuarios" class="hover:bg-blue-700 p-2 rounded">Usuarios</a>
+                <!-- Futuro: <a href="/reservas">Reservas</a> -->
+            </nav>
+        </div>
+        <div class="p-4">
+            <a href="/logout" class="text-sm hover:underline">Cerrar sesión</a>
+        </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="w-3/4 p-8">
+        <!-- Título con nombre del usuario -->
+        <h1 id="bienvenida" class="text-2xl font-bold mb-4">Bienvenido</h1>
+        <!-- Aquí irá el contenido dinámico -->
+        <p class="text-gray-700">Bienvenido al sistema de lavandería.</p>
+    </main>
+
+    <!-- Script para mostrar nombre del usuario desde localStorage -->
+    <script>
+        const usuario = JSON.parse(localStorage.getItem('usuario'));
+        if (usuario && usuario.nombre) {
+            document.getElementById('bienvenida').textContent = `Hola, ${usuario.nombre}`;
+        }
+    </script>
+</body>
+</html>
