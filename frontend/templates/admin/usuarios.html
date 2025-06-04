@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Usuarios - Sistema de Lavandería</title>
-    <link href="/static/css/output.css" rel="stylesheet">
+    <link href="../../static/css/output.css" rel="stylesheet">
 </head>
 <body class="flex h-screen">
     <!-- Barra lateral fija -->
@@ -14,26 +14,59 @@
             <nav class="flex flex-col space-y-4">
                 <a href="/dashboard" class="hover:bg-blue-700 p-2 rounded">Inicio</a>
                 <a href="/usuarios" class="hover:bg-blue-700 p-2 rounded">Usuarios</a>
-                <a href="/cerrar_sesion">Cerrar sesión</a>
+                <a href="/login">Cerrar sesión</a>
             </nav>
         </div>
     </aside>
     <!-- Contenido principal -->
-    <main class="w-3/4 p-8">
-        <h1 class="text-2xl font-bold mb-4">Crear Usuario</h1>
+    <main class="flex-1 bg-gray-100 p-8">
+    <div class="flex justify-end space-x-2 mb-8">
+        <button id="btn-admins" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow transition">
+            Administradores
+        </button>
+        <button id="btn-residentes" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow transition">
+            Residentes
+        </button>
+        <button id="btn-nuevo" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow transition">
+            + Nuevo
+        </button>
+    </div>
+    <!-- Aquí tu contenido principal -->
+</main>
+
+<!-- Modal centrado -->
+<div id="modal-registro" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+        <h2 class="text-xl font-semibold mb-4">Registrar nuevo usuario</h2>
         <form id="usuarioForm" class="space-y-4">
-            <input type="text" id="nombre" placeholder="Nombre completo" class="w-full p-2 border rounded" required>
-            <input type="email" id="correo" placeholder="Correo" class="w-full p-2 border rounded" required>
-            <input type="password" id="contrasena" placeholder="Contraseña" class="w-full p-2 border rounded" required>
-            <select id="tipo_usuario" class="w-full p-2 border rounded" required>
-                <option value="">Seleccione tipo de usuario</option>
-                <option value="Administrador">Administrador</option>
-                <option value="Residente">Residente</option>
-            </select>
-            <button type="submit" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Guardar</button>
+            <div>
+                <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
+                <input type="text" id="nombre" name="nombre" class="w-full border border-gray-300 rounded p-2" required>
+            </div>
+            <div>
+                <label for="correo" class="block text-sm font-medium text-gray-700">Correo</label>
+                <input type="email" id="correo" name="correo" class="w-full border border-gray-300 rounded p-2" required>
+            </div>
+            <div>
+                <label for="contrasena" class="block text-sm font-medium text-gray-700">Contraseña</label>
+                <input type="password" id="contrasena" name="contrasena" class="w-full border border-gray-300 rounded p-2" required>
+            </div>
+            <div>
+                <label for="tipo_usuario" class="block text-sm font-medium text-gray-700">Tipo de usuario</label>
+                <select id="tipo_usuario" name="tipo_usuario" class="w-full border border-gray-300 rounded p-2" required>
+                    <option value="">Seleccione...</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Residente">Residente</option>
+                </select>
+            </div>
+            <div class="flex justify-end space-x-2 pt-4">
+                
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Guardar</button>
+                <button type="button" id="cancelarModal" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Cancelar</button>
+            </div>
         </form>
-        <div id="mensaje" class="mt-4 text-green-600 font-semibold"></div>
-    </main>
+    </div>
+</div>
 
     <script src="../../static/js/admin/usuarios.js"></script>
 </body>

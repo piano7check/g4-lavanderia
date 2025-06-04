@@ -7,24 +7,37 @@ document.getElementById('usuarioForm').addEventListener('submit', async function
     const contrasena = document.getElementById('contrasena').value;
     const tipo_usuario = document.getElementById('tipo_usuario').value;
 
-    const token = localStorage.getItem('token');
+    try {
+        const response = await fetch('/api/usuarios', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nombre, correo, contrasena, tipo_usuario })
+        });
 
-    const response = await fetch('/api/usuarios', { //va al user_router es decir la api de usuarios
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({ nombre, correo, contrasena, tipo_usuario })
-    });
-
-    const mensaje = document.getElementById('mensaje');
-
-    if (response.ok) {
         const data = await response.json();
-        mensaje.textContent = data.mensaje;
-    } else {
-        mensaje.textContent = "Error al crear usuario.";
-        mensaje.classList.add('text-red-600');
+
+        if (response.ok) {
+            alert(data.mensaje);
+            document.getElementById('usuarioForm').reset();
+            document.getElementById('modal-registro').classList.add('hidden');
+        } else {
+            alert(data.error);
+        }
+
+    } catch (error) {
+        console.error('Error al registrar usuario:', error);
+        alert('Error del servidor. Intente más tarde.');
     }
+});
+
+// Mostrar el modal al hacer clic en "+ Nuevo"
+document.getElementById('btn-nuevo').addEventListener('click', () => {
+    document.getElementById('modal-registro').classList.remove('hidden');
+});
+
+// Ocultar modal al hacer clic en "Cancelar"
+document.getElementById('cancelarModal').addEventListener('click', () => {
+    document.getElementById('modal-registro').classList.add('hidden');
 });
