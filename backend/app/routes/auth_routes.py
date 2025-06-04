@@ -1,6 +1,8 @@
-#AUTH ROUTERS:
+#AUTH ROUTERS:auth_routes.py     ← Login, logout, autenticación
 from flask import Blueprint, request, jsonify
 from app.controllers.auth_controller import AuthController
+from ..models import Usuario
+from .. import db
 
 auth_bp = Blueprint('auth_bp', __name__, url_prefix='/api/auth')
 

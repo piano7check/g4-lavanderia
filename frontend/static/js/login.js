@@ -17,7 +17,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         const data = await response.json();
         localStorage.setItem('token', data.token);
         localStorage.setItem('usuario', JSON.stringify(data.usuario));
-        window.location.href = '/dashboard';//<!-- Redirige al dashboard -->
+        window.location.href = '/dashboard';//Redirige al dashboard
     } else {
         alert('Correo o contraseña incorrectos');
     }

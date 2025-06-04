@@ -11,25 +11,22 @@
     <!-- Barra lateral fija -->
     <aside class="w-1/4 bg-blue-900 text-white flex flex-col justify-between">
         <div class="p-4">
-            <h2 class="text-lg font-bold mb-6">Universidad Adventista</h2>
+            <h2 class="text-lg font-bold mb-6">Universidad Adventista de Bolivia</h2>
             <nav class="flex flex-col space-y-4">
                 <!-- Botón Inicio, redirige a dashboard -->
-                <a href="/dashboard" class="hover:bg-blue-700 p-2 rounded">Inicio</a>
+                <a href="/dashboard" class="hover:bg-blue-700 p-2 rounded">Inicio</a> <!--las rutas definidas en tu view_routes.py pues porque se accede por rutas Flask no por archivos-->
                 <!-- Botón Usuarios, redirige a la vista de creación/listado de usuarios -->
                 <a href="/usuarios" class="hover:bg-blue-700 p-2 rounded">Usuarios</a>
-                <!-- Futuro: <a href="/reservas">Reservas</a> -->
+                <!-- Botón cerrar sesion,  -->
+                <!--<a href="/cerrar_sesion">Cerrar sesion</a>-->
             </nav>
         </div>
-        <div class="p-4">
-            <a href="/logout" class="text-sm hover:underline">Cerrar sesión</a>
-        </div>
+    
     </aside>
 
     <!-- Contenido principal -->
     <main class="w-3/4 p-8">
-        <!-- Título con nombre del usuario -->
-        <h1 id="bienvenida" class="text-2xl font-bold mb-4">Bienvenido</h1>
-        <!-- Aquí irá el contenido dinámico -->
+        <h1 id="bienvenida" class="text-2xl font-bold mb-4">Bienvenido</h1><!-- titulo con nombre del usuario -->
         <p class="text-gray-700">Bienvenido al sistema de lavandería.</p>
     </main>
 

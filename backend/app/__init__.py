@@ -29,8 +29,11 @@ def create_app():
     # Importa y registra los blueprints
     from .routes.auth_routes import auth_bp
     from .routes.view_routes import view_bp
+    from .routes.user_routes import user_bp #PARA ADMIN RUTAS
     app.register_blueprint(auth_bp)
     app.register_blueprint(view_bp)
+    app.register_blueprint(user_bp)
+
     @app.errorhandler(404)
     def not_found_error(error):
         return {"error": "Recurso no encontrado"}, 404

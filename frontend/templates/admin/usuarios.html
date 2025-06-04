@@ -1,0 +1,40 @@
+<!-- usuarios.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios - Sistema de Lavandería</title>
+    <link href="/static/css/output.css" rel="stylesheet">
+</head>
+<body class="flex h-screen">
+    <!-- Barra lateral fija -->
+    <aside class="w-1/4 bg-blue-900 text-white flex flex-col justify-between">
+        <div class="p-4">
+            <h2 class="text-lg font-bold mb-6">Universidad Adventista de Bolivia</h2>
+            <nav class="flex flex-col space-y-4">
+                <a href="/dashboard" class="hover:bg-blue-700 p-2 rounded">Inicio</a>
+                <a href="/usuarios" class="hover:bg-blue-700 p-2 rounded">Usuarios</a>
+                <a href="/cerrar_sesion">Cerrar sesión</a>
+            </nav>
+        </div>
+    </aside>
+    <!-- Contenido principal -->
+    <main class="w-3/4 p-8">
+        <h1 class="text-2xl font-bold mb-4">Crear Usuario</h1>
+        <form id="usuarioForm" class="space-y-4">
+            <input type="text" id="nombre" placeholder="Nombre completo" class="w-full p-2 border rounded" required>
+            <input type="email" id="correo" placeholder="Correo" class="w-full p-2 border rounded" required>
+            <input type="password" id="contrasena" placeholder="Contraseña" class="w-full p-2 border rounded" required>
+            <select id="tipo_usuario" class="w-full p-2 border rounded" required>
+                <option value="">Seleccione tipo de usuario</option>
+                <option value="Administrador">Administrador</option>
+                <option value="Residente">Residente</option>
+            </select>
+            <button type="submit" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Guardar</button>
+        </form>
+        <div id="mensaje" class="mt-4 text-green-600 font-semibold"></div>
+    </main>
+
+    <script src="../../static/js/admin/usuarios.js"></script>
+</body>
+</html>
