@@ -35,11 +35,19 @@ def crear_usuario():
     db.session.commit()
 
     return jsonify({'mensaje': 'Usuario creado exitosamente'}), 201
-#LISTAR
+# LISTAR USUARIOS
+# (GET) - Listar todos los usuarios
 @user_bp.route('', methods=['GET'])
-def listar_usuarios():
+def obtener_usuarios():
     usuarios = Usuario.query.all()
-    return jsonify([usuario.to_dict() for usuario in usuarios]), 200
+    resultado = [{
+        'id': u.id,
+        'nombre': u.nombre,
+        'correo': u.correo,
+        'tipo_usuario': u.tipo_usuario
+    } for u in usuarios]
+    return jsonify(resultado)
+
 
 #EDITAR
 @user_bp.route('/<int:id>', methods=['PUT'])

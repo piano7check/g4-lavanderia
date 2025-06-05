@@ -12,19 +12,18 @@
         <div class="p-4">
             <img class="h-auto w-80" src="../../static/icons/logo-uab.svg" alt="logo uab">
             <nav class="flex flex-col space-y-4 w-52 place-self-center ">
-              
-                 <a href="/dashboard" class=" flex flex-row gap-3 justify-center border border-white p-2 rounded-xl  hover:bg-white/40  ">
+                <a href="/dashboard" class=" flex flex-row gap-3 justify-center border border-white p-2 rounded-xl  hover:bg-white/40  ">
                     <img class="h-auto w-5 hover:text-blue-800" src="../../static/icons/icon-white-1.svg" alt="">
-                     <span>Inicio</span> 
-                 </a>
-                 <a href="/usuarios" class=" flex flex-row gap-3 justify-center p-2 rounded-xl border text-center border-white hover:bg-white/40">
+                    <span>Inicio</span> 
+                </a>
+                <a href="/usuarios" class=" flex flex-row gap-3 justify-center p-2 rounded-xl border text-center border-white hover:bg-white/40">
                     <img class="h-auto w-5" src="../../static/icons/icon-white-2.svg" alt="">
-                     <span>Usuarios</span>
-                 </a>
-                 <a href="/login"  class="flex flex-row justify-center gap-2 p-2 rounded-xl border border-white text-center hover:bg-white/40">
+                    <span>Usuarios</span>
+                </a>
+                <a href="/login"  class="flex flex-row justify-center gap-2 p-2 rounded-xl border border-white text-center hover:bg-white/40">
                     <img class="h-auto w-5" src="../../static/icons/icon-white-3.svg" alt="">
                     <span>Cerrar sesión</span>
-                 </a>
+                </a>
             </nav>
         </div>
     
@@ -56,9 +55,31 @@
                 </button>
             </div>
         </div>
-    <!-- Aquí tu contenido principal -->
-</main>
+        <!-- TABLA DE USUARIOS Y BUSQUEDA -->
+        <div class="bg-white mx-8 px-8 py-6 rounded-xl shadow-lg">
+        <!-- Input de busqueda -->
+        <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700">Buscar</label>
+        <input type="text" id="buscarInput" class="mt-1 p-2 border border-gray-300 rounded w-full" placeholder="Buscar por nombre...">
+        </div>
 
+        <!-- Tabla de usuarios -->
+        <div class="overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-200 shadow-sm rounded">
+            <thead class="bg-blue-200">
+                <tr>
+                    <th class="py-2 px-4 border">Nombre</th>
+                    <th class="py-2 px-4 border">Tipo de Usuario</th>
+                    <th class="py-2 px-4 border">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="usuarios-body">
+                <!-- aca se insertan dinamicamente los usuarios -->
+            </tbody>
+        </table>
+    </div>
+</div>
+</main>
 <!-- Modal centrado -->
 <div id="modal-registro" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
     <div class="bg-white rounded-lg shadow-lg p-10 w-full max-w-md relative">
