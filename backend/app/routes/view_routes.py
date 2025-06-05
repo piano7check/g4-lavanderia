@@ -1,6 +1,5 @@
-# backend/app/routes/view_routes.py
 from flask import Blueprint, render_template, request, redirect, url_for, session
-from ..utils.auth import decodificar_token  # la función que decodifica el token
+from ..utils.auth import decodificar_token
 from ..models.usuario import Usuario
 
 view_bp = Blueprint('view_bp', __name__)
@@ -27,8 +26,8 @@ def dashboard():
     if not usuario:
         return redirect(url_for('view_bp.login'))
 
-    if usuario.tipo_usuario == 'superadministrador':
-        return render_template('admin/superdashboard.html')
+    if usuario.tipo_usuario == 'super_admin':
+        return render_template('super/dashboard.html')
     elif usuario.tipo_usuario == 'administrador':
         return render_template('admin/dashboard.html')
     else:
