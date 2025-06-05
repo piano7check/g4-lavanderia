@@ -12,8 +12,7 @@ user_bp = Blueprint('user_bp', __name__, url_prefix='/api/usuarios')
 @user_bp.route('', methods=['POST'])
 def crear_usuario():
     data = request.json
-
-    # Validar campos
+    #Validar campos
     nombre = data.get('nombre')
     correo = data.get('correo')
     contrasena = data.get('contrasena')
@@ -36,14 +35,13 @@ def crear_usuario():
     db.session.commit()
 
     return jsonify({'mensaje': 'Usuario creado exitosamente'}), 201
-
-# 🟡 LISTAR
+#LISTAR
 @user_bp.route('', methods=['GET'])
 def listar_usuarios():
     usuarios = Usuario.query.all()
     return jsonify([usuario.to_dict() for usuario in usuarios]), 200
 
-# 🟠 EDITAR
+#EDITAR
 @user_bp.route('/<int:id>', methods=['PUT'])
 def actualizar_usuario(id):
     data = request.json
@@ -59,8 +57,7 @@ def actualizar_usuario(id):
     db.session.commit()
     return jsonify({'mensaje': 'Usuario actualizado'}), 200
 
-
-# ELIMINAR
+#ELIMINAR
 @user_bp.route('/<int:id>', methods=['DELETE'])
 def eliminar_usuario(id):
     usuario = Usuario.query.get(id)
@@ -71,4 +68,3 @@ def eliminar_usuario(id):
     db.session.delete(usuario)
     db.session.commit()
     return jsonify({'mensaje': 'Usuario eliminado'}), 200
-
