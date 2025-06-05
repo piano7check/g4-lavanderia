@@ -42,24 +42,96 @@ document.getElementById('cancelarModal').addEventListener('click', () => {
     document.getElementById('modal-registro').classList.add('hidden');
 });
 
-let listaUsuarios = [];  // Se guarda aquí para poder buscar dinamicamente
+document.addEventListener('DOMContentLoaded', () => {
+    cargarUsuarios(); // Mostrar usuarios al cargar
+    configurarEventos(); // Asignar eventos iniciales
+});
+
+let listaUsuarios = []; // Lista global para búsqueda y edición
+
+// Configurar eventos iniciales
+function configurarEventos() {
+    // Abrir modal
+    document.getElementById('btn-nuevo').addEventListener('click', () => {
+        document.getElementById('usuarioForm').reset();
+        delete document.getElementById('usuarioForm').dataset.editando;
+        document.getElementById('modal-registro').classList.remove('hidden');
+        document.querySelector('#modal-registro h2').textContent = 'Registrar nuevo usuario';
+        document.querySelector('#usuarioForm button[type="submit"]').textContent = 'Guardar';
+    });
+
+    // Cancelar modal
+    document.getElementById('cancelarModal').addEventListener('click', () => {
+        document.getElementById('modal-registro').classList.add('hidden');
+    });
+
+    // Búsqueda dinámica
+    document.getElementById('buscarInput').addEventListener('input', (e) => {
+        const texto = e.target.value.toLowerCase();
+        const filtrados = listaUsuarios.filter(u =>
+            u.nombre.toLowerCase().includes(texto)
+        );
+        mostrarUsuarios(filtrados);
+    });
+
+    // Manejo de formulario (crear o editar)
+    document.getElementById('usuarioForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const idEditar = this.dataset.editando;
+        const nombre = document.getElementById('nombre').value;
+        const correo = document.getElementById('correo').value;
+        const contrasena = document.getElementById('contrasena').value;
+        const tipo_usuario = document.getElementById('tipo_usuario').value;
+        const datos = { nombre, correo, contrasena, tipo_usuario };
+
+        try {
+            let res;
+            if (idEditar) {
+                res = await fetch(`/api/usuarios/${idEditar}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(datos)
+                });
+                alert(res.ok ? "Usuario actualizado correctamente" : "Error al actualizar");
+            } else {
+                res = await fetch('/api/usuarios', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(datos)
+                });
+                alert(res.ok ? "Usuario creado correctamente" : "Error al crear");
+            }
+
+            this.reset();
+            delete this.dataset.editando;
+            document.querySelector('#usuarioForm button[type="submit"]').textContent = 'Guardar';
+            document.querySelector('#modal-registro h2').textContent = 'Registrar nuevo usuario';
+            document.getElementById('modal-registro').classList.add('hidden');
+            cargarUsuarios(); // Recargar usuarios actualizados
+        } catch (err) {
+            console.error('Error al guardar usuario:', err);
+            alert('Error del servidor');
+        }
+    });
+}
 
 // Cargar usuarios desde el backend
 async function cargarUsuarios() {
     try {
         const res = await fetch('/api/usuarios');
         const data = await res.json();
-        listaUsuarios = data;  //guardamos la lista completa
-        mostrarUsuarios(data); // Mostramos todos al inicio en usuarios.html
+        listaUsuarios = data;
+        mostrarUsuarios(data);
     } catch (err) {
         console.error("Error al cargar usuarios:", err);
     }
 }
 
-// Mostrar los usuarios en la tabla HTML
+// Mostrar los usuarios en la tabla
 function mostrarUsuarios(usuarios) {
     const tbody = document.getElementById('usuarios-body');
-    tbody.innerHTML = '';  //limpia tabla
+    tbody.innerHTML = '';
 
     if (usuarios.length === 0) {
         tbody.innerHTML = `<tr><td colspan="3" class="text-center py-4">No hay usuarios.</td></tr>`;
@@ -69,34 +141,39 @@ function mostrarUsuarios(usuarios) {
     usuarios.forEach(usuario => {
         const tr = document.createElement('tr');
         tr.classList.add("hover:bg-gray-100");
-
         tr.innerHTML = `
             <td class="py-2 px-4 border">${usuario.nombre}</td>
             <td class="py-2 px-4 border">${usuario.tipo_usuario}</td>
             <td class="py-2 px-4 border text-center">
-                <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-edit"></i></button>
-                <button class="text-red-500 hover:text-red-700 ml-2"><i class="fas fa-trash-alt"></i></button>
-            </td>
-        `;
-
+            //BOTON DE EDITAR USUARIOS:
+                <img src="../../static/img/icon-editar.png" 
+                    alt="Editar" class="cursor-pointer inline editar-usuario" data-id="${usuario.id}">
+            //BOTON DE ELIMINAR USUARIOS:
+                <img src="../../static/img/icon-eliminar.png" 
+                    alt="Eliminar" class="cursor-pointer inline eliminar-usuario" data-id="${usuario.id}">
+            </td>`;
         tbody.appendChild(tr);
     });
+
+    // Asignar eventos a los botones editar (después de renderizar)
+    document.querySelectorAll('.editar-usuario').forEach(boton => {
+        boton.addEventListener('click', () => {
+            const userId = boton.dataset.id;
+            const usuario = listaUsuarios.find(u => u.id == userId);
+
+            if (usuario) {
+                document.getElementById('nombre').value = usuario.nombre;
+                document.getElementById('correo').value = usuario.correo;
+                document.getElementById('contrasena').value = usuario.contrasena; //Con la opcion de tambien editar la contrasena
+                document.getElementById('tipo_usuario').value = usuario.tipo_usuario;
+
+                document.getElementById('usuarioForm').dataset.editando = userId;
+
+                document.querySelector('#modal-registro h2').textContent = 'Editar usuario';
+                document.querySelector('#usuarioForm button[type="submit"]').textContent = 'Actualizar';
+                document.getElementById('modal-registro').classList.remove('hidden');
+            }
+        });
+    });
 }
-// Evento para buscar mientras escribe
-document.getElementById('buscarInput').addEventListener('input', (e) => {
-    const texto = e.target.value.toLowerCase();
-
-    const filtrados = listaUsuarios.filter(u =>
-        u.nombre.toLowerCase().includes(texto)
-    );
-
-    mostrarUsuarios(filtrados);
-});
-document.addEventListener('DOMContentLoaded', () => {
-    cargarUsuarios();  //Trae los usuarios desde el backend
-});
-//Muestra los usuarios al entrar a la pagina
-document.addEventListener('DOMContentLoaded', () => {
-    cargarUsuarios();  //Trae los usuarios desde el backend
-});
 
