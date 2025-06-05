@@ -7,3 +7,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     document.getElementById("bienvenida").textContent = `Bienvenido/a, ${usuario.nombre}`;
 });
+
