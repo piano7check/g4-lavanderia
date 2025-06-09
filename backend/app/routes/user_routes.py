@@ -1,4 +1,4 @@
-#PARA ADMIN RUTAS: Crear, listar, editar , eliminar usuarios
+#PARA ADMIN RUTAS: Crear, listar, editar, eliminar usuarios
 # backend/routes/user_routes.py
 from flask import Blueprint, request, jsonify
 from .. import db
@@ -27,9 +27,8 @@ def crear_usuario():
     if Usuario.query.filter_by(correo=correo).first():
         return jsonify({'error': 'El correo ya está registrado'}), 409
 
-    # Encriptar contraseña ahora si 
+    # Encriptar contrasena ahora si 
     hashed_password = generate_password_hash(contrasena)
-
     nuevo_usuario = Usuario(nombre, correo, hashed_password, tipo_usuario)
     db.session.add(nuevo_usuario)
     db.session.commit()
@@ -66,13 +65,13 @@ def actualizar_usuario(id):
     return jsonify({'mensaje': 'Usuario actualizado'}), 200
 
 #ELIMINAR
+
 @user_bp.route('/<int:id>', methods=['DELETE'])
 def eliminar_usuario(id):
     usuario = Usuario.query.get(id)
+    if usuario:
+        db.session.delete(usuario)
+        db.session.commit()
+        return jsonify({'mensaje': 'Usuario eliminado'}), 200
+    return jsonify({'error': 'Usuario no encontrado'}), 404
 
-    if not usuario:
-        return jsonify({'error': 'Usuario no encontrado'}), 404
-
-    db.session.delete(usuario)
-    db.session.commit()
-    return jsonify({'mensaje': 'Usuario eliminado'}), 200

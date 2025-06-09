@@ -18,7 +18,7 @@ def login():
 def dashboard():
     return render_template('admin/dashboard.html') #busca dentro de templates/a admin/dashboard.html
 
-@view_bp.route('/usuarios') 
+@view_bp.route('/usuarios')#carga la vista de usuarios
 def usuarios():
     return render_template('admin/usuarios.html') #busca dentro de templates/a admin/usuarios.html
 

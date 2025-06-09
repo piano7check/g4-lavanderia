@@ -150,7 +150,7 @@ function mostrarUsuarios(usuarios) {
                     alt="Editar" class="cursor-pointer inline editar-usuario" data-id="${usuario.id}">
             
                 <img src="../../static/img/icon-eliminar.png" 
-                    alt="Eliminar" class="cursor-pointer inline elimina-usuario" data-id="${usuario.id}">
+                    alt="Eliminar" class="cursor-pointer inline eliminar-usuario" data-id="${usuario.id}">
             </td>`;
         tbody.appendChild(tr);
     });
@@ -177,3 +177,42 @@ function mostrarUsuarios(usuarios) {
     });
 }
 
+let usuarioAEliminar = null; //guarda temporalmente el ID
+
+// Delegamos el evento para boton de eliminar
+document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('eliminar-usuario')) {
+        usuarioAEliminar = e.target.dataset.id;
+        document.getElementById('modal-confirmar-eliminar').classList.remove('hidden');
+    }
+});
+
+// Botón "No" → cierra el modal
+document.getElementById('cancelarEliminar').addEventListener('click', () => {
+    usuarioAEliminar = null;
+    document.getElementById('modal-confirmar-eliminar').classList.add('hidden');
+});
+
+// Botón "Sí" → elimina el usuario
+document.getElementById('confirmarEliminar').addEventListener('click', async () => {
+    if (!usuarioAEliminar) return;
+
+    try {
+        const res = await fetch(`/api/usuarios/${usuarioAEliminar}`, {
+            method: 'DELETE'
+        });
+
+        if (res.ok) {
+            alert('Usuario eliminado correctamente.');
+            cargarUsuarios(); //Refresca la lista
+        } else {
+            alert('Error al eliminar el usuario.');
+        }
+    } catch (err) {
+        console.error('Error al eliminar usuario:', err);
+        alert('Ocurrió un error. Inténtelo más tarde.');
+    }
+
+    usuarioAEliminar = null;
+    document.getElementById('modal-confirmar-eliminar').classList.add('hidden');
+});
