@@ -15,3 +15,4 @@ class AuthController:#busca el usuario por correo y contraseña, genera un token
                     "token": token
                 }
         return None
+    

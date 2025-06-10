@@ -51,7 +51,7 @@ let listaUsuarios = []; // Lista global para búsqueda y edición
 
 // Configurar eventos iniciales
 function configurarEventos() {
-    // Abrir modal
+    // Abrir modal al presionar el boton del nuevo
     document.getElementById('btn-nuevo').addEventListener('click', () => {
         document.getElementById('usuarioForm').reset();
         delete document.getElementById('usuarioForm').dataset.editando;
@@ -59,7 +59,6 @@ function configurarEventos() {
         document.querySelector('#modal-registro h2').textContent = 'Registrar nuevo usuario';
         document.querySelector('#usuarioForm button[type="submit"]').textContent = 'Guardar';
     });
-
     // Cancelar modal
     document.getElementById('cancelarModal').addEventListener('click', () => {
         document.getElementById('modal-registro').classList.add('hidden');
@@ -102,7 +101,6 @@ function configurarEventos() {
                 });
                 alert(res.ok ? "Usuario creado correctamente" : "Error al crear");
             }
-
             this.reset();
             delete this.dataset.editando;
             document.querySelector('#usuarioForm button[type="submit"]').textContent = 'Guardar';
@@ -115,6 +113,14 @@ function configurarEventos() {
         }
     });
 }
+document.getElementById('btn-admins').addEventListener('click', () => {
+    filtrarPorTipo('Administrador');
+});
+
+document.getElementById('btn-residentes').addEventListener('click', () => {
+    filtrarPorTipo('Residente');
+});
+
 
 // Cargar usuarios desde el backend
 async function cargarUsuarios() {
@@ -126,6 +132,10 @@ async function cargarUsuarios() {
     } catch (err) {
         console.error("Error al cargar usuarios:", err);
     }
+}
+function filtrarPorTipo(tipo) {
+    const filtrados = listaUsuarios.filter(u => u.tipo_usuario === tipo);
+    mostrarUsuarios(filtrados);
 }
 
 // Mostrar los usuarios en la tabla
