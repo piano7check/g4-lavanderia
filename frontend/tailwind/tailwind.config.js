@@ -1,6 +1,7 @@
 module.exports = {
   content: [
-    "./templates/**/*.html"  // Ruta relativa desde la raíz del proyecto frontend
+    "../templates/auth/*.html",    // Ruta relativa desde la carpeta tailwind/
+    "../templates/**/*.html"       // Escanea todos los HTML en subcarpetas
   ],
   theme: {
     extend: {},
