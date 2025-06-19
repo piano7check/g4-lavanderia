@@ -14,7 +14,14 @@ def root():
 def login():
     return render_template('auth/login.html')# busca dentro de templates/a auth/login.html
 
-@view_bp.route('/dashboard')
+#vista para la interfza de residente
+@view_bp.route('/residente/bienvenida') #ruta recibida desde el frontend "login.js" al hacer login deben ser igual las rutas
+# Esta ruta se usa para mostrar la pantalla de bienvenida al residente después de iniciar sesión
+def bienvenida_residente():
+    return render_template('residente/bienvenida.html') 
+
+#vista para la interfaz de administrador
+@view_bp.route('/admin/dashboard') #ruta que debe coinincidir con la del frontend en login.js window.location.ref
 def dashboard():
     return render_template('admin/dashboard.html') #busca dentro de templates/a admin/dashboard.html
 

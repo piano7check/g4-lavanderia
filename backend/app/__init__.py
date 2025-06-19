@@ -3,10 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from .config import Config
 import os
-
-
 db = SQLAlchemy()  # Instancia global de SQLAlchemy
-
 def create_app():
     app = Flask(
         __name__,
