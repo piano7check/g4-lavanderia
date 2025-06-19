@@ -14,16 +14,20 @@ def login():
     return render_template('auth/login.html')
 
 @view_bp.route('/dashboard')
-def dashboard():
-    auth_header = request.headers.get('Authorization')
-    if not auth_header or not auth_header.startswith('Bearer '):
-        return redirect(url_for('view_bp.login'))
-    token = auth_header.split(' ')[1]
-    user_id = decodificar_token(token)
-    if not user_id:
-        return redirect(url_for('view_bp.login'))
+#def dashboard():
+ #   auth_header = request.headers.get('Authorization')
+  #  if not auth_header or not auth_header.startswith('Bearer '):
+   #     return redirect(url_for('view_bp.login'))
+   # token = auth_header.split(' ')[1]
+   # user_id = decodificar_token(token)
+   # if not user_id:
+   #     return redirect(url_for('view_bp.login'))
     # Busca el usuario en la base de datos
-    usuario = Usuario.query.get(user_id)
-    nombre = usuario.nombre if usuario else "Usuario"
+   # usuario = Usuario.query.get(user_id)
+   # nombre = usuario.nombre if usuario else "Usuario"
+   # return render_template('dashboard.html', nombre=nombre)
+def dashboard():
+    # 🔓 Versión sin autenticación para desarrollo
+    nombre = "Ariel Álvarez"  # Puedes dejar esto fijo o simular un usuario
     return render_template('dashboard.html', nombre=nombre)
 
