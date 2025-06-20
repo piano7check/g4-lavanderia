@@ -6,22 +6,23 @@
     <link href="/static/css/output.css" rel="stylesheet">
 </head>
 <body>
-    <aside class="w-64 bg-blue-950 text-white flex flex-col justify-between cursor-pointer">
+    <!-- Barra lateral fija -->
+     <aside class="w-64 bg-blue-950 text-white flex flex-col justify-between cursor-pointer">
         <div class="p-4">
             <img class="h-auto w-80" src="../../static/icons/logo-uab.svg" alt="logo uab">
             <nav class="flex flex-col space-y-4 w-52 place-self-center ">
-              
-                 <a href="/admin/dashboard" class=" flex flex-row gap-3 justify-center border border-white p-2 rounded-xl  hover:bg-white/40  ">
+                 <a href="/residente/bienvenida" class=" flex flex-row gap-3 justify-center border border-white p-2 rounded-xl  hover:bg-white/40  ">
                     <img class="h-auto w-5 hover:text-blue-800" src="../../static/icons/icon-white-1.svg" alt="">
                      <span>Inicio</span> 
                  </a>
-                 <a href="/admin/solicitudes"  class="flex flex-row justify-center gap-2 p-2 rounded-xl border border-white text-center hover:bg-white/40">
-                    <img class="h-auto w-5" src="../../static/icons/icon-white-5.svg" alt="">
-                    <span>Solicitudes</span>
+                <a href="/residente/registrar_solicitud" class=" flex flex-row gap-3 justify-center p-2 rounded-xl border text-center border-white hover:bg-white/40">
+                    
+                    <img class="h-auto w-5" src="../../static/icons/icon-white-4.svg" alt="">
+                     <span>Registrar solicitud</span>
                  </a>
-                 <a href="/usuarios" class=" flex flex-row gap-3 justify-center p-2 rounded-xl border text-center border-white hover:bg-white/40">
-                    <img class="h-auto w-5" src="../../static/icons/icon-white-2.svg" alt="">
-                     <span>Usuarios</span>
+                 <a href="/residente/solicitudes" class=" flex flex-row gap-3 justify-center p-2 rounded-xl border text-center border-white hover:bg-white/40">
+                    <img class="h-auto w-5" src="../../static/icons/icon-white-5.svg" alt="">
+                     <span>Solicitudes</span>
                  </a>
                  <a href="/login"  class="flex flex-row justify-center gap-2 p-2 rounded-xl border border-white text-center hover:bg-white/40">
                     <img class="h-auto w-5" src="../../static/icons/icon-white-3.svg" alt="">
@@ -31,6 +32,6 @@
         </div>
     
     </aside>
-
+    
 </body>
 </html>

@@ -6,35 +6,33 @@
     <title>Solicitudes - Administrador</title>
     <link href="/static/css/output.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100">
-   <div class="flex flex-row h-screen">
-  <!-- Sidebar debe tener altura completa -->
-  {% include 'admin/sidebar.html' %}
+<body class="bg-gray-100 h-screen overflow-hidden">
+  <div class="flex flex-row h-full">
+    <!-- Sidebar -->
+    {% include 'admin/sidebar.html' %}
 
-  <!-- Contenido principal -->
-    <div class=" flex-1 w-full h-full ">
-       <div class=" bg-white grid grid-cols-2 justify-between w-full h-16 rounded-b-xl px-8 ">
-                <div class="text-blue-900 font-medium text-2xl flex justify-start items-center">
-                   
-                </div>
-                <div class="flex flex-row justify-end items-center">
-                    <img class="h-auto w-10 hover:bg-slate-200 hover:rounded-full p-2" src="../../static/icons/icon-blue-1.svg" alt="">
-                    <div class="flex flex-row items-center">
-                        <img class="h-auto w-11 hover:bg-slate-200 hover:rounded-full p-2" src="../../static/icons/icon-blue-2.svg" alt="">
-                        <span id="nombreUsuarioHeader" class="text-lg text-gray-600"></span>
-                        <span id="tipoUsuarioHeader" class="text-lg text-gray-600"></span>
-                    </div>
-                </div>
-            </div>
-      <div class="flex-1 p-8 ml-40 h-full overflow-y-auto">
-        <div class="flex items-center justify-between mb-8 bg-white px-8 py-4 rounded-xl shadow-lg ">
-            <div class="text-blue-900 font-medium text-2xl flex justify-start items-center">
-                <span>Solicitudes de Lavandería</span>
-            </div>
+    <!-- Contenido principal -->
+    <div class="flex-1 flex flex-col h-full">
+      
+      <!-- Barra superior -->
+      <div class="bg-white grid grid-cols-2 justify-between w-full h-16 rounded-b-xl px-8">
+        <div class="text-blue-900 font-medium text-2xl flex items-center">
+          <span>Solicitudes de Lavandería</span>
         </div>
-    
-        <table class="w-full text-left  bg-white rounded shadow">
-          <thead class="bg-blue-900 text-white">
+        <div class="flex flex-row justify-end items-center">
+          <img class="h-auto w-10 hover:bg-slate-200 hover:rounded-full p-2" src="../../static/icons/icon-blue-1.svg" alt="">
+          <div class="flex flex-row items-center">
+            <img class="h-auto w-11 hover:bg-slate-200 hover:rounded-full p-2" src="../../static/icons/icon-blue-2.svg" alt="">
+            <span id="nombreUsuarioHeader" class="text-lg text-gray-600 ml-2"></span>
+            <span id="tipoUsuarioHeader" class="text-lg text-gray-600 ml-2"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenido con scroll interno -->
+      <div class="flex-1 p-8 overflow-y-auto">
+        <table class="w-full text-left bg-white shadow rounded-lg">
+          <thead class="bg-blue-900 text-white rounded-lg">
             <tr>
               <th class="p-3">ID</th>
               <th class="p-3">ID Usuario</th>
@@ -44,16 +42,29 @@
               <th class="p-3">Acción</th>
             </tr>
           </thead>
-          <tbody id="tablaSolicitudes" class="text-gray-700">
-            <!-- JS insertará las filas aquí -->
+          <tbody id="tablaSolicitudes" class="text-gray-700 rounded-lg">
+            <!-- Aquí siguen apareciendo las filas renderizadas por Flask -->
+            {% for solicitud in solicitudes %}
+              <tr class="border-b hover:bg-gray-50">
+                <td class="p-3">{{ solicitud.id }}</td>
+                <td class="p-3">{{ solicitud.id_usuario }}</td>
+                <td class="p-3">{{ solicitud.nombre }}</td>
+                <td class="p-3">{{ solicitud.fecha }}</td>
+                <td class="p-3">{{ solicitud.estado }}</td>
+                <td class="p-3">
+                  <!-- botón o acción -->
+                  <a href="#" class="text-blue-600 hover:underline">Ver</a>
+                </td>
+              </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
     </div>
-   </div>
+  </div>
 
-
-
-    <script src="../../static/js/admin/solicitudes.js"></script>
+  <script src="../../static/js/admin/solicitudes.js"></script>
 </body>
+
+
 </html>
