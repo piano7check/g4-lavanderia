@@ -8,26 +8,7 @@
 </head>
 <body class="flex h-screen">
     <!-- Barra lateral fija -->
-    <aside class="w-64 bg-blue-950 text-white flex flex-col justify-between ">
-        <div class="p-4">
-            <img class="h-auto w-80" src="../../static/icons/logo-uab.svg" alt="logo uab">
-            <nav class="flex flex-col space-y-4 w-52 place-self-center ">
-                <a href="/dashboard" class=" flex flex-row gap-3 justify-center border border-white p-2 rounded-xl  hover:bg-white/40  ">
-                    <img class="h-auto w-5 hover:text-blue-800" src="../../static/icons/icon-white-1.svg" alt="">
-                    <span>Inicio</span> 
-                </a>
-                <a href="/usuarios" class=" flex flex-row gap-3 justify-center p-2 rounded-xl border text-center border-white hover:bg-white/40">
-                    <img class="h-auto w-5" src="../../static/icons/icon-white-2.svg" alt="">
-                    <span>Usuarios</span>
-                </a>
-                <a href="/login"  class="flex flex-row justify-center gap-2 p-2 rounded-xl border border-white text-center hover:bg-white/40">
-                    <img class="h-auto w-5" src="../../static/icons/icon-white-3.svg" alt="">
-                    <span>Cerrar sesión</span>
-                </a>
-            </nav>
-        </div>
-    
-    </aside>
+    {% include 'admin/sidebar.html' %}
     <!-- Contenido principal -->
     <main class="flex-1 w-full h-full  bg-gray-200">
         <div class=" bg-white grid grid-cols-1 place-self-end mb-5 w-full h-16 rounded-b-xl px-8 ">
@@ -64,20 +45,21 @@
         </div>
 
         <!-- Tabla de usuarios -->
-        <div class="overflow-x-auto">
-        <table class="min-w-full bg-white border border-gray-200 shadow-sm rounded">
-            <thead class="bg-blue-200">
+            <div class="overflow-x-auto overflow-y-auto max-h-[400px]">
+            <table class="min-w-full bg-white border border-gray-200 shadow-sm rounded">
+                <thead class="bg-blue-200">
                 <tr>
                     <th class="py-2 px-4 border">Nombre</th>
                     <th class="py-2 px-4 border">Tipo de Usuario</th>
                     <th class="py-2 px-4 border">Acciones</th>
                 </tr>
-            </thead>
-            <tbody id="usuarios-body">
+                </thead>
+                <tbody id="usuarios-body">
                 <!-- aca se insertan dinamicamente los usuarios -->
-            </tbody>
-        </table>
-    </div>
+                </tbody>
+            </table>
+            </div>
+
 </div>
 </main>
 <!-- Modal centrado -->

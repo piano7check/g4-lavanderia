@@ -155,12 +155,12 @@ function mostrarUsuarios(usuarios) {
             <td class="py-2 px-4 border">${usuario.nombre}</td>
             <td class="py-2 px-4 border">${usuario.tipo_usuario}</td>
             <td class="py-2 px-4 border text-center">
-            
-                <img src="../../static/img/icon-editar.png" 
-                    alt="Editar" class="cursor-pointer inline editar-usuario" data-id="${usuario.id}">
-            
-                <img src="../../static/img/icon-eliminar.png" 
-                    alt="Eliminar" class="cursor-pointer inline eliminar-usuario" data-id="${usuario.id}">
+                <div class="flex justify-center items-center gap-3">
+                    <img src="../../static/img/icon-editar.png" 
+                        alt="Editar" class="cursor-pointer w-6 h-6 editar-usuario" data-id="${usuario.id}">
+                    <img src="../../static/img/icon-eliminar.png" 
+                        alt="Eliminar" class="cursor-pointer w-6 h-6 eliminar-usuario" data-id="${usuario.id}">
+                </div>
             </td>`;
         tbody.appendChild(tr);
     });

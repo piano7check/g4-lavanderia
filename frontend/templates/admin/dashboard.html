@@ -9,27 +9,7 @@
 </head>
 <body class="flex h-screen">
     <!-- Barra lateral fija -->
-     <aside class="w-64 bg-blue-950 text-white flex flex-col justify-between cursor-pointer">
-        <div class="p-4">
-            <img class="h-auto w-80" src="../../static/icons/logo-uab.svg" alt="logo uab">
-            <nav class="flex flex-col space-y-4 w-52 place-self-center ">
-              
-                 <a href="/dashboard" class=" flex flex-row gap-3 justify-center border border-white p-2 rounded-xl  hover:bg-white/40  ">
-                    <img class="h-auto w-5 hover:text-blue-800" src="../../static/icons/icon-white-1.svg" alt="">
-                     <span>Inicio</span> 
-                 </a>
-                 <a href="/usuarios" class=" flex flex-row gap-3 justify-center p-2 rounded-xl border text-center border-white hover:bg-white/40">
-                    <img class="h-auto w-5" src="../../static/icons/icon-white-2.svg" alt="">
-                     <span>Usuarios</span>
-                 </a>
-                 <a href="/login"  class="flex flex-row justify-center gap-2 p-2 rounded-xl border border-white text-center hover:bg-white/40">
-                    <img class="h-auto w-5" src="../../static/icons/icon-white-3.svg" alt="">
-                    <span>Cerrar sesión</span>
-                 </a>
-            </nav>
-        </div>
-    
-    </aside>
+      {% include 'admin/sidebar.html' %}
     <!-- Contenido principal -->
     <main class="w-full h-full  bg-gray-200">
         <div class=" bg-white grid grid-cols-2 justify-between mb-5 w-full h-16 rounded-b-xl px-8 ">
@@ -40,28 +20,50 @@
                 <img class="h-auto w-10 hover:bg-slate-200 hover:rounded-full p-2" src="../../static/icons/icon-blue-1.svg" alt="">
                 <div class="flex flex-row items-center">
                     <img class="h-auto w-11 hover:bg-slate-200 hover:rounded-full p-2" src="../../static/icons/icon-blue-2.svg" alt="">
-                    <span id="bienvenida" class="text-lg text-gray-600"></span>
-                    <span id="tipo_usuario" class="text-lg text-gray-600"></span>
+                    <span id="nombreUsuarioHeader" class="text-lg text-gray-600"></span>
+                    <span id="tipoUsuarioHeader" class="text-lg text-gray-600"></span>
                 </div>
             </div>
         </div>
-        <div class="bg-white mx-8 px-8 py-4 rounded-xl shadow-lg">
-            <h1 id="bienvenida" class="text-2xl font-bold mb-2 text-blue-900">Bienvenido</h1><!-- titulo con nombre del usuario -->
+        <div class="bg-white mx-8 px-8 py-4 rounded-xl shadow-lg mb-8">
+            <h1 id="nombreUsuarioBienvenida" class="text-2xl font-bold mb-2 text-blue-900">Bienvenido</h1>
             <p class="text-gray-600">Bienvenido al sistema de lavandería.</p>
+        </div>
+         <!-- Tarjetas informativas -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6 mx-8">
+            <div class="bg-white p-4 rounded-xl shadow border-l-4 border-blue-600">
+                <h3 class="text-gray-700 text-sm font-medium">Prendas lavadas hoy</h3>
+                <p class="text-2xl font-bold text-blue-900">128</p>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow border-l-4 border-green-600">
+                <h3 class="text-gray-700 text-sm font-medium">Usuarios registrados</h3>
+                <p class="text-2xl font-bold text-green-900">312</p>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow border-l-4 border-yellow-500">
+                <h3 class="text-gray-700 text-sm font-medium">Prendas adicionales cobradas</h3>
+                <p class="text-2xl font-bold text-yellow-700">45</p>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow border-l-4 border-red-500">
+                <h3 class="text-gray-700 text-sm font-medium">Pendientes de entrega</h3>
+                <p class="text-2xl font-bold text-red-700">16</p>
+            </div>
+        </div>
+
+        <!-- Panel semanal -->
+        <div class="bg-white p-6 rounded-xl shadow mx-8">
+            <h2 class="text-xl font-semibold text-blue-900 mb-4">Resumen semanal</h2>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li>Total prendas lavadas: <strong>890</strong></li>
+                <li>Prendas fuera de horario: <strong>23</strong></li>
+                <li>Ingresos por prendas extra: <strong>Bs. 45</strong></li>
+                <li>Usuarios frecuentes: <strong>180</strong></li>
+            </ul>
         </div>
         
     </main>
 
     <!-- Script para mostrar nombre del usuario desde localStorage -->
-    <script>
-        const usuario = JSON.parse(localStorage.getItem('usuario'));
-        if (usuario && usuario.nombre) {
-            document.getElementById('bienvenida').textContent = `Hola, ${usuario.nombre}`;
-        }
-        if (usuario && usuario.nombre) {
-            document.getElementById('bienvenida').textContent = ` ${usuario.nombre}`;
-        }
-    </script>
+    
 </body>
 </html>
 
