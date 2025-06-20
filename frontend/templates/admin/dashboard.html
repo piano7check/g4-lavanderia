@@ -40,13 +40,13 @@
                 <img class="h-auto w-10 hover:bg-slate-200 hover:rounded-full p-2" src="../../static/icons/icon-blue-1.svg" alt="">
                 <div class="flex flex-row items-center">
                     <img class="h-auto w-11 hover:bg-slate-200 hover:rounded-full p-2" src="../../static/icons/icon-blue-2.svg" alt="">
-                    <span id="bienvenida" class="text-lg text-gray-600"></span>
-                    <span id="tipo_usuario" class="text-lg text-gray-600"></span>
+                    <span id="nombreUsuarioHeader" class="text-lg text-gray-600"></span>
+                    <span id="tipoUsuarioHeader" class="text-lg text-gray-600"></span>
                 </div>
             </div>
         </div>
         <div class="bg-white mx-8 px-8 py-4 rounded-xl shadow-lg">
-            <h1 id="bienvenida" class="text-2xl font-bold mb-2 text-blue-900">Bienvenido</h1><!-- titulo con nombre del usuario -->
+            <h1 id="nombreUsuarioBienvenida" class="text-2xl font-bold mb-2 text-blue-900">Bienvenido</h1>
             <p class="text-gray-600">Bienvenido al sistema de lavandería.</p>
         </div>
         
@@ -54,14 +54,14 @@
 
     <!-- Script para mostrar nombre del usuario desde localStorage -->
     <script>
-        const usuario = JSON.parse(localStorage.getItem('usuario'));
-        if (usuario && usuario.nombre) {
-            document.getElementById('bienvenida').textContent = `Hola, ${usuario.nombre}`;
-        }
-        if (usuario && usuario.nombre) {
-            document.getElementById('bienvenida').textContent = ` ${usuario.nombre}`;
-        }
-    </script>
+    const nombre = localStorage.getItem('nombre');
+
+    if (nombre) {
+        document.getElementById('nombreUsuarioHeader').textContent = `${nombre}`;
+        document.getElementById('nombreUsuarioBienvenida').textContent = `Bienvenido, ${nombre}`;
+    }
+</script>
+
 </body>
 </html>
 
