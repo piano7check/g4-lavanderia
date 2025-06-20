@@ -4,61 +4,131 @@
 <head>
     <meta charset="UTF-8">
     <title>Inicio - Sistema de Lavandería</title>
-    <!-- Tailwind CSS compilado -->
     <link href="/static/css/output.css" rel="stylesheet">
 </head>
 <body class="flex h-screen">
-    <!-- Barra lateral fija -->
-     <aside class="w-64 bg-blue-950 text-white flex flex-col justify-between cursor-pointer">
-        <div class="p-4">
-            <img class="h-auto w-80" src="../../static/icons/logo-uab.svg" alt="logo uab">
-            <nav class="flex flex-col space-y-4 w-52 place-self-center ">
-              
-                 <a href="/admin/dashboard" class=" flex flex-row gap-3 justify-center border border-white p-2 rounded-xl  hover:bg-white/40  ">
-                    <img class="h-auto w-5 hover:text-blue-800" src="../../static/icons/icon-white-1.svg" alt="">
-                     <span>Inicio</span> 
-                 </a>
-                 <a href="/usuarios" class=" flex flex-row gap-3 justify-center p-2 rounded-xl border text-center border-white hover:bg-white/40">
-                    <img class="h-auto w-5" src="../../static/icons/icon-white-2.svg" alt="">
-                     <span>Usuarios</span>
-                 </a>
-                 <a href="/admin/solicitudes"  class="flex flex-row justify-center gap-2 p-2 rounded-xl border border-white text-center hover:bg-white/40">
-                    <img class="h-auto w-5" src="../../static/icons/icon-white-3.svg" alt="">
-                    <span>Solicitudes</span>
-                 </a>
-                 <a href="/login"  class="flex flex-row justify-center gap-2 p-2 rounded-xl border border-white text-center hover:bg-white/40">
-                    <img class="h-auto w-5" src="../../static/icons/icon-white-3.svg" alt="">
-                    <span>Cerrar sesión</span>
-                 </a>
-            </nav>
-        </div>
-    
-    </aside>
+   <!-- Barra lateral -->
+<aside class="w-64 bg-blue-950 text-white flex flex-col justify-between">
+    <div class="p-4">
+        <img class="h-auto w-80" src="../../static/icons/logo-uab.svg" alt="logo uab">
+        <nav class="flex flex-col space-y-4 w-52 place-self-center">
+
+            <!-- Inicio -->
+            <a href="/dashboard" class="flex gap-3 justify-center border border-white p-2 rounded-xl hover:bg-white/40">
+                <img class="h-auto w-5" src="../../static/icons/icon-white-1.svg" alt="">
+                <span>Inicio</span>
+            </a>
+
+            <!-- Estudiantes / Usuarios -->
+            <a href="/usuarios" class="flex gap-3 justify-center p-2 rounded-xl border border-white hover:bg-white/40">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5.121 17.804A10.948 10.948 0 0112 15c2.485 0 4.771.894 6.879 2.375M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span>Usuarios</span>
+            </a>
+            <a href="/estudiantes" class="flex gap-3 justify-center p-2 rounded-xl border border-white hover:bg-white/40">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5.121 17.804A10.948 10.948 0 0112 15c2.485 0 4.771.894 6.879 2.375M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span>Estudiantes</span>
+            </a>
+            <!-- Lavar ropa -->
+            <a href="/lavar" class="flex gap-3 justify-center p-2 rounded-xl border border-white hover:bg-white/40">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5zm0 2h14v14H5V5zm2 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 0h8v2h-8V6zm-1 7a5 5 0 1 1 10 0 5 5 0 0 1-10 0zm5-3a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />
+                </svg>
+                <span>Lavar</span>
+            </a>
+
+            <!-- Reportes -->
+            <a href="/reportes" class="flex gap-3 justify-center p-2 rounded-xl border border-white hover:bg-white/40">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 17v-6h6v6m2 4H7a2 2 0 01-2-2V5a2 2 0 012-2h5l2 2h5a2 2 0 012 2v12a2 2 0 01-2 2z" />
+                </svg>
+                <span>Reportes</span>
+            </a>
+
+            <!-- Configuración -->
+            <a href="/configuracion" class="flex gap-3 justify-center p-2 rounded-xl border border-white hover:bg-white/40">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9.75 3a.75.75 0 0 0-1.5 0v1.065a7.517 7.517 0 0 0-1.695.983L5.12 4.12a.75.75 0 1 0-1.06 1.06l.928 1.435a7.518 7.518 0 0 0-.983 1.695H3a.75.75 0 0 0 0 1.5h1.065a7.517 7.517 0 0 0 .983 1.695L4.12 14.88a.75.75 0 1 0 1.06 1.06l1.435-.928a7.518 7.518 0 0 0 1.695.983V21a.75.75 0 0 0 1.5 0v-1.065a7.517 7.517 0 0 0 1.695-.983l1.435.928a.75.75 0 0 0 1.06-1.06l-.928-1.435a7.518 7.518 0 0 0 .983-1.695H21a.75.75 0 0 0 0-1.5h-1.065a7.517 7.517 0 0 0-.983-1.695l.928-1.435a.75.75 0 0 0-1.06-1.06l-1.435.928a7.518 7.518 0 0 0-1.695-.983V3z" />
+                </svg>
+                <span>Configuración</span>
+            </a>
+
+            <!-- Cerrar sesión -->
+            <a href="/logout" class="flex gap-2 justify-center p-2 rounded-xl border border-white hover:bg-white/40">
+                <img class="h-auto w-5" src="../../static/icons/icon-white-3.svg" alt="">
+                <span>Cerrar sesión</span>
+            </a>
+
+        </nav>
+    </div>
+</aside>
+
+
     <!-- Contenido principal -->
-    <main class="w-full h-full  bg-gray-200">
-        <div class=" bg-white grid grid-cols-2 justify-between mb-5 w-full h-16 rounded-b-xl px-8 ">
-            <div class="text-blue-900 font-medium text-2xl flex justify-start items-center">
-                <span>LAVANDERIA</span>
-            </div>
-            <div class="flex flex-row justify-end items-center">
-                <img class="h-auto w-10 hover:bg-slate-200 hover:rounded-full p-2" src="../../static/icons/icon-blue-1.svg" alt="">
-                <div class="flex flex-row items-center">
-                    <img class="h-auto w-11 hover:bg-slate-200 hover:rounded-full p-2" src="../../static/icons/icon-blue-2.svg" alt="">
-                    <span id="nombreUsuarioHeader" class="text-lg text-gray-600"></span>
-                    <span id="tipoUsuarioHeader" class="text-lg text-gray-600"></span>
+    <main class="w-full h-full bg-gray-100 p-6">
+        <!-- Header -->
+        <div class="bg-white grid grid-cols-2 mb-5 w-full h-16 rounded-xl px-8 shadow">
+            <div class="text-blue-900 font-semibold text-2xl flex items-center">LAVANDERÍA</div>
+            <div class="flex justify-end items-center space-x-4">
+                <img class="w-10 hover:bg-gray-200 rounded-full p-2" src="../../static/icons/icon-blue-1.svg" alt="">
+                <img class="w-11 hover:bg-gray-200 rounded-full p-2" src="../../static/icons/icon-blue-2.svg" alt="">
+                <div class="text-right">
+                    <div id="nombreUsuarioHeader" class="text-gray-700 font-medium"></div>
+                    <div id="tipoUsuarioHeader" class="text-sm text-gray-500"></div>
                 </div>
             </div>
         </div>
-        <div class="bg-white mx-8 px-8 py-4 rounded-xl shadow-lg">
-            <h1 id="nombreUsuarioBienvenida" class="text-2xl font-bold mb-2 text-blue-900">Bienvenido</h1>
-            <p class="text-gray-600">Bienvenido al sistema de lavandería.</p>
+
+        <!-- Bienvenida -->
+        <div class="bg-white p-6 rounded-xl shadow mb-6">
+            <h1 id="nombreUsuarioBienvenida" class="text-2xl font-bold text-blue-900 mb-2">Bienvenido</h1>
+            <p class="text-gray-600">Estás en el panel principal del sistema de lavandería UAB.</p>
         </div>
-        
+
+        <!-- Tarjetas informativas -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+            <div class="bg-white p-4 rounded-xl shadow border-l-4 border-blue-600">
+                <h3 class="text-gray-700 text-sm font-medium">Prendas lavadas hoy</h3>
+                <p class="text-2xl font-bold text-blue-900">128</p>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow border-l-4 border-green-600">
+                <h3 class="text-gray-700 text-sm font-medium">Usuarios registrados</h3>
+                <p class="text-2xl font-bold text-green-900">312</p>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow border-l-4 border-yellow-500">
+                <h3 class="text-gray-700 text-sm font-medium">Prendas adicionales cobradas</h3>
+                <p class="text-2xl font-bold text-yellow-700">45</p>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow border-l-4 border-red-500">
+                <h3 class="text-gray-700 text-sm font-medium">Pendientes de entrega</h3>
+                <p class="text-2xl font-bold text-red-700">16</p>
+            </div>
+        </div>
+
+        <!-- Panel semanal -->
+        <div class="bg-white p-6 rounded-xl shadow">
+            <h2 class="text-xl font-semibold text-blue-900 mb-4">Resumen semanal</h2>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li>Total prendas lavadas: <strong>890</strong></li>
+                <li>Prendas fuera de horario: <strong>23</strong></li>
+                <li>Ingresos por prendas extra: <strong>Bs. 45</strong></li>
+                <li>Usuarios frecuentes: <strong>180</strong></li>
+            </ul>
+        </div>
     </main>
 
     <!-- Script para mostrar nombre del usuario desde localStorage -->
 
 </body>
 </html>
+
 
 
