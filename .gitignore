@@ -403,3 +403,4 @@ pyrightconfig.json
 # End of https://www.toptal.com/developers/gitignore/api/python,flask,node,tensorflow,tailwind
 package-lock.json
 output.css
+.DS_Store
