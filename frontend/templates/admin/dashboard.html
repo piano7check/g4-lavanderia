@@ -14,13 +14,17 @@
             <img class="h-auto w-80" src="../../static/icons/logo-uab.svg" alt="logo uab">
             <nav class="flex flex-col space-y-4 w-52 place-self-center ">
               
-                 <a href="/dashboard" class=" flex flex-row gap-3 justify-center border border-white p-2 rounded-xl  hover:bg-white/40  ">
+                 <a href="/admin/dashboard" class=" flex flex-row gap-3 justify-center border border-white p-2 rounded-xl  hover:bg-white/40  ">
                     <img class="h-auto w-5 hover:text-blue-800" src="../../static/icons/icon-white-1.svg" alt="">
                      <span>Inicio</span> 
                  </a>
                  <a href="/usuarios" class=" flex flex-row gap-3 justify-center p-2 rounded-xl border text-center border-white hover:bg-white/40">
                     <img class="h-auto w-5" src="../../static/icons/icon-white-2.svg" alt="">
                      <span>Usuarios</span>
+                 </a>
+                 <a href="/admin/solicitudes"  class="flex flex-row justify-center gap-2 p-2 rounded-xl border border-white text-center hover:bg-white/40">
+                    <img class="h-auto w-5" src="../../static/icons/icon-white-3.svg" alt="">
+                    <span>Solicitudes</span>
                  </a>
                  <a href="/login"  class="flex flex-row justify-center gap-2 p-2 rounded-xl border border-white text-center hover:bg-white/40">
                     <img class="h-auto w-5" src="../../static/icons/icon-white-3.svg" alt="">
@@ -53,15 +57,7 @@
     </main>
 
     <!-- Script para mostrar nombre del usuario desde localStorage -->
-    <script>
-        const usuario = JSON.parse(localStorage.getItem('usuario'));
-        if (usuario && usuario.nombre) {
-            document.getElementById('bienvenida').textContent = `Hola, ${usuario.nombre}`;
-        }
-        if (usuario && usuario.nombre) {
-            document.getElementById('bienvenida').textContent = ` ${usuario.nombre}`;
-        }
-    </script>
+
 </body>
 </html>
 

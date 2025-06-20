@@ -25,9 +25,19 @@ def bienvenida_residente():
 def dashboard():
     return render_template('admin/dashboard.html') #busca dentro de templates/a admin/dashboard.html
 
-@view_bp.route('/usuarios')#carga la vista de usuarios
+@view_bp.route('/usuarios')#carga la vista de usuarios = html boton de usuarios
 def usuarios():
     return render_template('admin/usuarios.html') #busca dentro de templates/a admin/usuarios.html
 
+@view_bp.route('/residente/registrar_solicitud')#vista al presionar el boton de registrar solicitud
+def registrar_solicitud():
+    return render_template('residente/registrar_solicitud.html')# busca dentro de templates/a residente/registrar_solicitud.html
 
+# Vista para el administrador: tabla de solicitudes
+@view_bp.route('/admin/solicitudes')
+def ver_solicitudes_admin():
+    return render_template('admin/solicitudes.html')
 
+@view_bp.route('/residente/solicitudes')
+def vista_solicitudes_residente():
+    return render_template('residente/solicitudes.html')

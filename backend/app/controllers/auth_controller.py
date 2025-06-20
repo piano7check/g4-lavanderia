@@ -13,6 +13,7 @@ class AuthController:
                 return {
                     "token": token,
                     "usuario": {
+                        "id": usuario.id, 
                         "nombre": usuario.nombre,
                         "correo": usuario.correo,
                         "tipo_usuario": usuario.tipo_usuario  # 👈 ¡Este campo es clave!

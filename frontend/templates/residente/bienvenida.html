@@ -1,15 +1,63 @@
-<!-- frontend/templates/residente/bienvenida.html -->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Bienvenido Residente</title>
+    <title>Inicio - Sistema de Lavandería -Bienvenido Residente</title>
+    <!-- Tailwind CSS compilado -->
     <link href="/static/css/output.css" rel="stylesheet">
 </head>
-<body class="bg-blue-50 flex items-center justify-center h-screen">
-    <div class="text-center bg-white p-8 rounded-lg shadow-lg">
-        <h1 class="text-3xl font-bold text-blue-700">¡Bienvenido Residente !</h1>
-        <p class="mt-4 text-gray-600">Esta es tu área de usuario residente.</p>
-    </div>
+<body class="flex h-screen">
+    <!-- Barra lateral fija -->
+     <aside class="w-64 bg-blue-950 text-white flex flex-col justify-between cursor-pointer">
+        <div class="p-4">
+            <img class="h-auto w-80" src="../../static/icons/logo-uab.svg" alt="logo uab">
+            <nav class="flex flex-col space-y-4 w-52 place-self-center ">
+                 <a href="/residente/bienvenida" class=" flex flex-row gap-3 justify-center border border-white p-2 rounded-xl  hover:bg-white/40  ">
+                    <img class="h-auto w-5 hover:text-blue-800" src="../../static/icons/icon-white-1.svg" alt="">
+                     <span>Inicio</span> 
+                 </a>
+                <a href="/residente/registrar_solicitud" class=" flex flex-row gap-3 justify-center p-2 rounded-xl border text-center border-white hover:bg-white/40">
+                    
+                    <img class="h-auto w-5" src="../../static/icons/icon-white-2.svg" alt="">
+                     <span>Registrar solicitud</span>
+                 </a>
+                 <a href="/residente/solicitudes" class=" flex flex-row gap-3 justify-center p-2 rounded-xl border text-center border-white hover:bg-white/40">
+                    <img class="h-auto w-5" src="../../static/icons/icon-white-2.svg" alt="">
+                     <span>Solicitudes</span>
+                 </a>
+                 <a href="/login"  class="flex flex-row justify-center gap-2 p-2 rounded-xl border border-white text-center hover:bg-white/40">
+                    <img class="h-auto w-5" src="../../static/icons/icon-white-3.svg" alt="">
+                    <span>Cerrar sesión</span>
+                 </a>
+            </nav>
+        </div>
+    
+    </aside>
+    <!-- Contenido principal -->
+    <main class="w-full h-full  bg-gray-200">
+        <div class=" bg-white grid grid-cols-2 justify-between mb-5 w-full h-16 rounded-b-xl px-8 ">
+            <div class="text-blue-900 font-medium text-2xl flex justify-start items-center">
+                <span>SISTEMA DE LAVANDERIA UAB</span>
+            </div>
+            <div class="flex flex-row justify-end items-center">
+                <img class="h-auto w-10 hover:bg-slate-200 hover:rounded-full p-2" src="../../static/icons/icon-blue-1.svg" alt="">
+                <div class="flex flex-row items-center">
+                    <img class="h-auto w-11 hover:bg-slate-200 hover:rounded-full p-2" src="../../static/icons/icon-blue-2.svg" alt="">
+                    <span id="bienvenida" class="text-lg text-gray-600"></span>
+                    <span id="tipo_usuario" class="text-lg text-gray-600"></span>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white mx-8 px-8 py-4 rounded-xl shadow-lg">
+            <h1 id="bienvenida" class="text-2xl font-bold mb-2 text-blue-900">Bienvenido Residente</h1><!-- titulo con nombre del usuario -->
+            <p class="text-gray-600">Bienvenido al sistema de lavandería.</p>
+        </div>
+        
+    </main>
+
+
 </body>
 </html>
+
+

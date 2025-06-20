@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from .config import Config
 import os
+
 db = SQLAlchemy()  # Instancia global de SQLAlchemy
 def create_app():
     app = Flask(
@@ -27,9 +28,17 @@ def create_app():
     from .routes.auth_routes import auth_bp
     from .routes.view_routes import view_bp
     from .routes.user_routes import user_bp #PARA ADMIN RUTAS
+    # Importa las rutas de residente
+    from .routes.solicitud_routes import solicitud_bp
+    from .routes.solicitud_admin_routes import solicitud_admin_bp
+
+
     app.register_blueprint(auth_bp)
     app.register_blueprint(view_bp)
     app.register_blueprint(user_bp)
+    app.register_blueprint(solicitud_bp)
+    app.register_blueprint(solicitud_admin_bp) 
+
 
     @app.errorhandler(404)
     def not_found_error(error):
