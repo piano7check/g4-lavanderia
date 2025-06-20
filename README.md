@@ -29,7 +29,9 @@ cd G4-LAVANDERIA
 python -m venv venv
 
 ✅ Paso 2: Activar el entorno virtual
- venv/Scripts/activate
+ venv/Scripts/activate "en windows
+ source venv/bin/activate "para MacOs"
+
 
 ✅ Paso 3: pip install -r requirements.txt
 
@@ -50,6 +52,9 @@ npm install
 npm run dev
 
 🛢️ Base de Datos - MySQL
+Usuario:root
+Password:uab-2025
+
 📌 Crear base de datos y tabla de usuarios
 
 -- Crear la base de datos con collation para soportar caracteres especiales
@@ -68,3 +73,24 @@ CREATE TABLE usuarios (
     contrasena VARCHAR(256) NOT NULL,
     tipo_usuario VARCHAR(50) NOT NULL
 ) ENGINE=InnoDB;
+-- tabla solicitudes
+CREATE TABLE solicitudes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    fecha_solicitud DATE NOT NULL,
+    estado VARCHAR(30) DEFAULT 'pendiente',
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+        ON DELETE CASCADE
+);
+
+--  Tabla 2: prendas_solicitud
+
+CREATE TABLE prendas_solicitud (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_solicitud INT NOT NULL,
+    tipo_prenda VARCHAR(50) NOT NULL,
+    cantidad INT NOT NULL,
+    color_descripcion VARCHAR(100) NOT NULL,
+    FOREIGN KEY (id_solicitud) REFERENCES solicitudes(id)
+        ON DELETE CASCADE
+);
