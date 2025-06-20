@@ -1,0 +1,131 @@
+<!-- usuarios.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios - Sistema de Lavandería</title>
+    <link href="../../static/css/output.css" rel="stylesheet">
+</head>
+<body class="flex h-screen">
+    <!-- Barra lateral fija -->
+    <aside class="w-64 bg-blue-950 text-white flex flex-col justify-between ">
+        <div class="p-4">
+            <img class="h-auto w-80" src="../../static/icons/logo-uab.svg" alt="logo uab">
+            <nav class="flex flex-col space-y-4 w-52 place-self-center ">
+                <a href="/dashboard" class=" flex flex-row gap-3 justify-center border border-white p-2 rounded-xl  hover:bg-white/40  ">
+                    <img class="h-auto w-5 hover:text-blue-800" src="../../static/icons/icon-white-1.svg" alt="">
+                    <span>Inicio</span> 
+                </a>
+                <a href="/usuarios" class=" flex flex-row gap-3 justify-center p-2 rounded-xl border text-center border-white hover:bg-white/40">
+                    <img class="h-auto w-5" src="../../static/icons/icon-white-2.svg" alt="">
+                    <span>Usuarios</span>
+                </a>
+                <a href="/login"  class="flex flex-row justify-center gap-2 p-2 rounded-xl border border-white text-center hover:bg-white/40">
+                    <img class="h-auto w-5" src="../../static/icons/icon-white-3.svg" alt="">
+                    <span>Cerrar sesión</span>
+                </a>
+            </nav>
+        </div>
+    
+    </aside>
+    <!-- Contenido principal -->
+    <main class="flex-1 w-full h-full  bg-gray-200">
+        <div class=" bg-white grid grid-cols-1 place-self-end mb-5 w-full h-16 rounded-b-xl px-8 ">
+            <div class="flex flex-row justify-end items-center">
+                <img class="h-auto w-10 hover:bg-slate-200 hover:rounded-full p-2" src="../../static/icons/icon-blue-1.svg" alt="">
+                <div class="flex flex-row items-center">
+                    <img class="h-auto w-11 hover:bg-slate-200 hover:rounded-full p-2" src="../../static/icons/icon-blue-2.svg" alt="">
+                    <span id="bienvenida" class="text-lg text-gray-600"></span>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center justify-between space-x-2 mb-8 bg-white mx-8 px-8 py-4 rounded-xl shadow-lg ">
+            <div class="text-blue-900 font-medium text-2xl flex justify-start items-center">
+                <span>USUARIOS</span>
+            </div>
+            <div>
+                <button id="btn-admins" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2 px-4 rounded shadow transition">
+                    Administradores
+                </button>
+                <button id="btn-residentes" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2 px-4 rounded shadow transition">
+                    Residentes
+                </button>
+                <button id="btn-nuevo" class="bg-blue-900 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow transition">
+                    + Nuevo
+                </button>
+            </div>
+        </div>
+        <!-- TABLA DE USUARIOS Y BUSQUEDA -->
+        <div class="bg-white mx-8 px-8 py-6 rounded-xl shadow-lg">
+        <!-- Input de busqueda -->
+        <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700">Buscar</label>
+        <input type="text" id="buscarInput" class="mt-1 p-2 border border-gray-300 rounded w-full" placeholder="Buscar por nombre...">
+        </div>
+
+        <!-- Tabla de usuarios -->
+            <div class="overflow-x-auto overflow-y-auto max-h-[400px]">
+            <table class="min-w-full bg-white border border-gray-200 shadow-sm rounded">
+                <thead class="bg-blue-200">
+                <tr>
+                    <th class="py-2 px-4 border">Nombre</th>
+                    <th class="py-2 px-4 border">Tipo de Usuario</th>
+                    <th class="py-2 px-4 border">Acciones</th>
+                </tr>
+                </thead>
+                <tbody id="usuarios-body">
+                <!-- aca se insertan dinamicamente los usuarios -->
+                </tbody>
+            </table>
+            </div>
+
+</div>
+</main>
+<!-- Modal centrado -->
+<div id="modal-registro" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+    <div class="bg-white rounded-lg shadow-lg p-10 w-full max-w-md relative">
+        <h2 class="text-xl font-semibold mb-4 text-blue-900">Registrar nuevo usuario</h2>
+        <form id="usuarioForm" class="space-y-4">
+            <div class="">
+                <label for="nombre" class="block text-sm font-medium text-gray-600">Nombre</label>
+                <input type="text" id="nombre" name="nombre" class="w-full border border-gray-300 rounded-xl shadow-md p-2" required>
+            </div>
+            <div>
+                <label for="correo" class="block text-sm font-medium text-gray-600">Correo</label>
+                <input type="email" id="correo" name="correo" class="w-full border border-gray-300 rounded-xl p-2 shadow-md" required>
+            </div>
+            <div>
+                <label for="contrasena" class="block text-sm font-medium text-gray-600 ">Contraseña</label>
+                <input type="password" id="contrasena" name="contrasena" class="w-full border border-gray-300 rounded-xl p-2 shadow-md" required>
+            </div>
+            <div>
+                <label for="tipo_usuario" class="block text-sm font-medium text-gray-600">Tipo de usuario</label>
+                <select id="tipo_usuario" name="tipo_usuario" class="w-full border border-gray-300 rounded-lg p-4 shadow-md" required>
+                    <option value="">Seleccione...</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Residente">Residente</option>
+                </select>
+            </div>
+            <div class="flex justify-end space-x-2 pt-4">
+                
+                <button type="submit" class="bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Guardar</button>
+                <button type="button" id="cancelarModal" class="bg-red-600 text-white px-4 py-2 rounded-lg ">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Modal para de eliminacion del usuario -->
+<div id="modal-confirmar-eliminar" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
+        <h2 class="text-lg font-semibold mb-4">¿Estas seguro de eliminar este usuario?</h2>
+        <div class="flex justify-center gap-4">
+            <button id="confirmarEliminar" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Sí</button>
+            <button id="cancelarEliminar" class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">No</button>
+        </div>
+    </div>
+</div>
+
+
+    <script src="../../static/js/admin/usuarios.js"></script>
+</body>
+</html>
