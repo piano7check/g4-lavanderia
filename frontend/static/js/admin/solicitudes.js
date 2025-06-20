@@ -21,11 +21,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                         ${generarOpcionesEstado(s.estado)}
                     </select>
                 </td>
-                <td class="p-3 border">
-                    <button class="bg-green-600 p-2 text-white px-3 py-1 rounded hover:bg-green-700 notificarBtn" data-id="${s.id}">
-                        Notificar
-                    </button>
-                </td>
             `;
             tabla.appendChild(tr);
         });
