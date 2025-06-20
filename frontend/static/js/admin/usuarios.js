@@ -99,7 +99,7 @@ function configurarEventos() {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(datos)
                 });
-                alert(res.ok ? "Usuario creado correctamente" : "Error al crear");
+                alert(res.ok ? "Usuario creado correctamente" : "Error al crear tu");
             }
             this.reset();
             delete this.dataset.editando;
